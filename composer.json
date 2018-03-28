@@ -1,0 +1,30 @@
+{
+    "name": "phpunitgoodpractices/polyfill",
+    "type": "library",
+    "description": "Lacking future-compat polyfills for PHPUnit.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Dariusz Rumiński",
+            "email": "dariusz.ruminski@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^5.5 || ^7.0",
+        "phpunit/phpunit": "^4.0 || ^5.3 || ^6.0 || ^7.0"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.11"
+    },
+    "conflict": {
+        "hhvm": "*"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true
+    },
+    "autoload": {
+        "files": [ "src/aliases.php" ],
+        "psr-4": { "PHPUnitGoodPractices\\Polyfill\\": "src/" }
+    }
+}
