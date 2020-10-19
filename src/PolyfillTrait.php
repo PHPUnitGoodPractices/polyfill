@@ -18,7 +18,7 @@ if (version_compare(PHPUnitVersionRetriever::getVersion(), '7.0.0') < 0) {
     {
         public function expectException($exception)
         {
-            if (is_callable(['parent', 'expectException'])) {
+            if (\is_callable(['parent', 'expectException'])) {
                 parent::expectException($exception);
             } else {
                 $this->setExpectedException($exception);
