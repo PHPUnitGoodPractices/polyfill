@@ -11,9 +11,7 @@
 
 namespace PHPUnitGoodPractices\Polyfill;
 
-use PHPUnitGoodPractices\Traits\PHPUnitVersionRetriever;
-
-if (version_compare(PHPUnitVersionRetriever::getVersion(), '7.0.0') < 0) {
+if (version_compare(\PHPUnit\Runner\Version::id(), '7.0.0') < 0) {
     trait PolyfillTrait
     {
         public function expectException($exception)
