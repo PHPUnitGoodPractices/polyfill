@@ -16,9 +16,6 @@
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.16"
     },
-    "conflict": {
-        "hhvm": "*"
-    },
     "config": {
         "optimize-autoloader": true,
         "sort-packages": true
