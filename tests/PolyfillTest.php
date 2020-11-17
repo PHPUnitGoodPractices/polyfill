@@ -23,7 +23,6 @@ class PolyfillTest extends TestCase
         $this->expectException(\RuntimeException::class);
 
         throw new \RuntimeException();
-        $this->fail();
     }
 
     public function testExpectExceptionMessageMatches()
@@ -31,7 +30,6 @@ class PolyfillTest extends TestCase
         $this->expectExceptionMessageMatches('/example/');
 
         throw new \RuntimeException('example');
-        $this->fail();
     }
 
     public function testAssertIsArray()
