@@ -26,4 +26,31 @@ trait PolyfillTrait7
             $this->setExpectedException($exception);
         }
     }
+
+    public function expectExceptionMessageMatches(string $regexp): void
+    {
+        if (\is_callable(['parent', 'expectExceptionMessageMatches'])) {
+            parent::expectExceptionMessageMatches($regexp);
+        } else {
+            $this->expectExceptionMessageRegExp($regexp);
+        }
+    }
+
+    public static function assertMatchesRegularExpression(string $pattern, string $string, string $message = ''): void
+    {
+        if (\is_callable(['parent', 'assertMatchesRegularExpression'])) {
+            parent::assertMatchesRegularExpression($pattern, $string, $message);
+        } else {
+            static::assertRegExp($pattern, $string, $message);
+        }
+    }
+
+    public static function assertFileDoesNotExist(string $filename, string $message = ''): void
+    {
+        if (\is_callable(['parent', 'assertFileDoesNotExist'])) {
+            parent::assertFileDoesNotExist($filename, $message);
+        } else {
+            static::assertFileNotExists($filename, $message);
+        }
+    }
 }
