@@ -58,7 +58,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          composer update --optimize-autoloader --no-interaction --no-progress --ignore-platform-req=hhvm ${{ matrix.composer-flags }}
+          composer update --optimize-autoloader --no-interaction --no-progress ${{ matrix.composer-flags }}
 
       - name: Run tests
         run: |
