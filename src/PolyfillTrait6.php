@@ -29,10 +29,28 @@ trait PolyfillTrait6
     {
         if (\is_callable(['parent', 'expectExceptionMessageMatches'])) {
             parent::expectExceptionMessageMatches($regexp);
-        } elseif (\is_callable(['parent', 'setExpectedExceptionRegExp'])) {
-            $this->setExpectedExceptionRegExp(\Exception::class, $regexp);
-        } else {
+
+            return;
+        }
+
+        // In some PHPUnit versions just setting an expectation for specific
+        // expection message won't trigger exception handler. Therefore we need
+        // to set the expected type, but trying to keep the type.
+        if (\is_callable(['parent', 'getExpectedException'])) {
+            $expectedException = parent::getExpectedException(); // This is an @internal method.
+        }
+
+        if (null === $expectedException) {
+            $expectedException = \Exception::class;
+        }
+
+        $this->expectException($expectedException);
+
+        if (\is_callable(['parent', 'expectExceptionMessageRegExp'])) {
+            // Method available since Release 5.2.0
             $this->expectExceptionMessageRegExp($regexp);
+        } else {
+            $this->setExpectedExceptionRegExp($expectedException, $regexp);
         }
     }
 
