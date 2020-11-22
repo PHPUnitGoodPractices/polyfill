@@ -14,14 +14,7 @@ namespace PHPUnitGoodPractices\Polyfill;
 if (version_compare(\PHPUnit\Runner\Version::id(), '7.0.0') < 0) {
     trait PolyfillTrait
     {
-        public function expectException($exception)
-        {
-            if (\is_callable(['parent', 'expectException'])) {
-                parent::expectException($exception);
-            } else {
-                $this->setExpectedException($exception);
-            }
-        }
+        use PolyfillTrait6;
     }
 } else {
     trait PolyfillTrait

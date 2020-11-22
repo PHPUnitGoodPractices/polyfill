@@ -23,6 +23,57 @@ class PolyfillTest extends TestCase
         $this->expectException(\RuntimeException::class);
 
         throw new \RuntimeException();
-        $this->fail();
+    }
+
+    public function testExpectExceptionMessageMatches()
+    {
+        $this->expectExceptionMessageMatches('/example/');
+
+        throw new \RuntimeException('example');
+    }
+
+    public function testAssertIsArray()
+    {
+        $this->assertIsArray([]);
+    }
+
+    public function testAssertIsString()
+    {
+        $this->assertIsString('');
+    }
+
+    public function testAssertIsBool()
+    {
+        $this->assertIsBool(true);
+    }
+
+    public function testAssertIsCallable()
+    {
+        $this->assertIsCallable([$this, 'testAssertIsCallable']);
+    }
+
+    public function testAssertIsInt()
+    {
+        $this->assertIsInt(1);
+    }
+
+    public function testAssertMatchesRegularExpression()
+    {
+        $this->assertMatchesRegularExpression('/\d/', '123');
+    }
+
+    public function testAssertStringContainsString()
+    {
+        $this->assertStringContainsString('test', 'testing');
+    }
+
+    public function testAssertStringNotContainsString()
+    {
+        $this->assertStringNotContainsString('foobar', 'testing');
+    }
+
+    public function testAssertFileDoesNotExist()
+    {
+        $this->assertFileDoesNotExist('invalid');
     }
 }
