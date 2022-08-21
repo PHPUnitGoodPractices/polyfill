@@ -20,7 +20,7 @@ trait PolyfillTrait7
 {
     public function expectException(string $exception): void
     {
-        if (\is_callable(['parent', 'expectException'])) {
+        if (\is_callable([parent::class, 'expectException'])) {
             parent::expectException($exception);
         } else {
             $this->setExpectedException($exception);
@@ -29,7 +29,7 @@ trait PolyfillTrait7
 
     public function expectExceptionMessageMatches(string $regexp): void
     {
-        if (\is_callable(['parent', 'expectExceptionMessageMatches'])) {
+        if (\is_callable([parent::class, 'expectExceptionMessageMatches'])) {
             parent::expectExceptionMessageMatches($regexp);
         } else {
             $this->expectExceptionMessageRegExp($regexp);
@@ -38,7 +38,7 @@ trait PolyfillTrait7
 
     public static function assertMatchesRegularExpression(string $pattern, string $string, string $message = ''): void
     {
-        if (\is_callable(['parent', 'assertMatchesRegularExpression'])) {
+        if (\is_callable([parent::class, 'assertMatchesRegularExpression'])) {
             parent::assertMatchesRegularExpression($pattern, $string, $message);
         } else {
             static::assertRegExp($pattern, $string, $message);
@@ -47,7 +47,7 @@ trait PolyfillTrait7
 
     public static function assertFileDoesNotExist(string $filename, string $message = ''): void
     {
-        if (\is_callable(['parent', 'assertFileDoesNotExist'])) {
+        if (\is_callable([parent::class, 'assertFileDoesNotExist'])) {
             parent::assertFileDoesNotExist($filename, $message);
         } else {
             static::assertFileNotExists($filename, $message);

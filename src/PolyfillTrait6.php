@@ -18,7 +18,7 @@ trait PolyfillTrait6
 {
     public function expectException($exception)
     {
-        if (\is_callable(['parent', 'expectException'])) {
+        if (\is_callable([parent::class, 'expectException'])) {
             parent::expectException($exception);
         } else {
             $this->setExpectedException($exception);
@@ -27,7 +27,7 @@ trait PolyfillTrait6
 
     public function expectExceptionMessageMatches($regexp)
     {
-        if (\is_callable(['parent', 'expectExceptionMessageMatches'])) {
+        if (\is_callable([parent::class, 'expectExceptionMessageMatches'])) {
             parent::expectExceptionMessageMatches($regexp);
 
             return;
@@ -36,7 +36,7 @@ trait PolyfillTrait6
         // In some PHPUnit versions just setting an expectation for specific
         // expection message won't trigger exception handler. Therefore we need
         // to set the expected type, but trying to keep the type.
-        if (\is_callable(['parent', 'getExpectedException'])) {
+        if (\is_callable([parent::class, 'getExpectedException'])) {
             $expectedException = parent::getExpectedException(); // This is an @internal method.
         }
 
@@ -46,7 +46,7 @@ trait PolyfillTrait6
 
         $this->expectException($expectedException);
 
-        if (\is_callable(['parent', 'expectExceptionMessageRegExp'])) {
+        if (\is_callable([parent::class, 'expectExceptionMessageRegExp'])) {
             // Method available since Release 5.2.0
             $this->expectExceptionMessageRegExp($regexp);
         } else {
@@ -56,7 +56,7 @@ trait PolyfillTrait6
 
     public static function assertIsArray($actual, $message = '')
     {
-        if (\is_callable(['parent', 'assertIsArray'])) {
+        if (\is_callable([parent::class, 'assertIsArray'])) {
             parent::assertIsArray($actual, $message);
         } else {
             static::assertInternalType('array', $actual, $message);
@@ -65,7 +65,7 @@ trait PolyfillTrait6
 
     public static function assertIsString($actual, $message = '')
     {
-        if (\is_callable(['parent', 'assertIsString'])) {
+        if (\is_callable([parent::class, 'assertIsString'])) {
             parent::assertIsString($actual, $message);
         } else {
             static::assertInternalType('string', $actual, $message);
@@ -74,7 +74,7 @@ trait PolyfillTrait6
 
     public static function assertIsBool($actual, $message = '')
     {
-        if (\is_callable(['parent', 'assertIsBool'])) {
+        if (\is_callable([parent::class, 'assertIsBool'])) {
             parent::assertIsBool($actual, $message);
         } else {
             static::assertInternalType('bool', $actual, $message);
@@ -83,7 +83,7 @@ trait PolyfillTrait6
 
     public static function assertIsCallable($actual, $message = '')
     {
-        if (\is_callable(['parent', 'assertIsCallable'])) {
+        if (\is_callable([parent::class, 'assertIsCallable'])) {
             parent::assertIsCallable($actual, $message);
         } else {
             static::assertInternalType('callable', $actual, $message);
@@ -92,7 +92,7 @@ trait PolyfillTrait6
 
     public static function assertIsInt($actual, $message = '')
     {
-        if (\is_callable(['parent', 'assertIsInt'])) {
+        if (\is_callable([parent::class, 'assertIsInt'])) {
             parent::assertIsInt($actual, $message);
         } else {
             static::assertInternalType('int', $actual, $message);
@@ -101,7 +101,7 @@ trait PolyfillTrait6
 
     public static function assertMatchesRegularExpression($pattern, $string, $message = '')
     {
-        if (\is_callable(['parent', 'assertMatchesRegularExpression'])) {
+        if (\is_callable([parent::class, 'assertMatchesRegularExpression'])) {
             parent::assertMatchesRegularExpression($pattern, $string, $message);
         } else {
             static::assertRegExp($pattern, $string, $message);
@@ -110,7 +110,7 @@ trait PolyfillTrait6
 
     public static function assertStringContainsString($needle, $haystack, $message = '')
     {
-        if (\is_callable(['parent', 'assertStringContainsString'])) {
+        if (\is_callable([parent::class, 'assertStringContainsString'])) {
             parent::assertStringContainsString($needle, $haystack, $message);
         } else {
             static::assertContains($needle, $haystack, $message);
@@ -119,7 +119,7 @@ trait PolyfillTrait6
 
     public static function assertStringNotContainsString($needle, $haystack, $message = '')
     {
-        if (\is_callable(['parent', 'assertStringNotContainsString'])) {
+        if (\is_callable([parent::class, 'assertStringNotContainsString'])) {
             parent::assertStringNotContainsString($needle, $haystack, $message);
         } else {
             static::assertNotContains($needle, $haystack, $message);
@@ -128,7 +128,7 @@ trait PolyfillTrait6
 
     public static function assertFileDoesNotExist($filename, $message = '')
     {
-        if (\is_callable(['parent', 'assertFileDoesNotExist'])) {
+        if (\is_callable([parent::class, 'assertFileDoesNotExist'])) {
             parent::assertFileDoesNotExist($filename, $message);
         } else {
             static::assertFileNotExists($filename, $message);
