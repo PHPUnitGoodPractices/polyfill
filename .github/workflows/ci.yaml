@@ -25,8 +25,9 @@ jobs:
           - 7.2
           - 7.3
           - 7.4
-        include:
-          - { operating-system: 'ubuntu-latest', php-version: '8.0', composer-flags: '--ignore-platform-req=php' }
+          - 8.0
+          - 8.1
+          - 8.2
 
     name: PHP ${{ matrix.php-version }} CI on ${{ matrix.operating-system }}
 
