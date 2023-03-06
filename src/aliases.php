@@ -14,7 +14,7 @@ foreach ([
     'PHPUnit_Framework_ExpectationFailedException' => 'PHPUnit\Framework\ExpectationFailedException',
     'PHPUnit_Framework_TestCase' => 'PHPUnit\Framework\TestCase',
     'PHPUnit_Runner_Version' => 'PHPUnit\Runner\Version',
-] as $new => $old) {
+] as $old => $new) {
     if (!class_exists($new) && class_exists($old)) {
         class_alias($old, $new);
     }
