@@ -4,6 +4,11 @@
          bootstrap="./vendor/autoload.php"
          cacheResult="false"
 >
+    <coverage>
+        <include>
+            <directory>./src</directory>
+        </include>
+    </coverage>
     <testsuites>
         <testsuite name="Default">
             <directory>tests</directory>
