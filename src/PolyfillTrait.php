@@ -16,9 +16,13 @@ if (version_compare(\PHPUnit\Runner\Version::id(), '7.0.0') < 0) {
     {
         use PolyfillTrait6;
     }
-} else {
+} elseif (version_compare(\PHPUnit\Runner\Version::id(), '10.0.0') < 0) {
     trait PolyfillTrait
     {
         use PolyfillTrait7;
+    }
+} else {
+    trait PolyfillTrait
+    {
     }
 }
